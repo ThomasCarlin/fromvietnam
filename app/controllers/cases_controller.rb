@@ -43,6 +43,6 @@ class CasesController < ApplicationController
     end
 
     def case_params
-      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:images,:email)
+      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:images,:email, :placeofduty,:branch)
     end
 end

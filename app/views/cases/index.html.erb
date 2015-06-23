@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
 <script src="holder.js"></script>
+<% count = 2 %>
 <h1>Listing Case(s)</h1>
-    <% @cases.where(email: current_user.email).each do |x| %>
+    <% @cases.each do |x| %>
+      <% count = count +1 %>
+      <% if count == 3 %>
+      <div class="row">
+        <% count = 0 %>
+      <% end %>
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
             <% if x.images != nil %>
@@ -11,50 +17,61 @@
             <% end %>
             <div class="caption">
               <h3><%= x.name %></h3>
+              <!-- Single button -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Details <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a>Date of Birth: <%=x.DOB %></a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
               <table class="table table-striped">
                 <tr>
                   <td>D.O.B.</td>
                   <td><%=x.DOB%></td>
-                </tr>
-                <tr>
                   <td>Birthplace</td>
                   <td><%=x.birthplace%></td>
                 </tr>
                 <tr>
                   <td>Race</td>
                   <td><%=x.race%></td>
+                  <td>Meeting place</td>
+                  <td><%=x.place%></td>
                 </tr>
                 <tr>
                   <td>Mother's name</td>
                   <td><%=x.mothername%></td>
-                </tr>
-                <tr>
-                  <td>place</td>
-                  <td><%=x.place%></td>
-                </tr>
-                <tr>
                   <td>Mother Details</td>
                   <td><%=x.motherdetails%></td>
-                </tr  >
+                </tr>
                 <tr>
                   <td>Father Name</td>
                   <td><%=x.fathername%></td>
-                </tr>
-                <tr>
                   <td>State</td>
                   <td><%=x.state%></td>
                 </tr>
                 <tr>
                   <td>Position</td>
                   <td><%=x.position%></td>
+                  <td>Branch of Duty</td>
+                  <td><%=x.branch %></td>
                 </tr>
                 <tr>
+                  <td>Place of Duty</td>
+                  <td><%=x.placeofduty%></td>
                   <td>Time Of Service</td>
                   <td><%=x.time%></td>
                 </tr>
                 <tr>
                   <td>Occupation</td>
                   <td><%=x.occupation%></td>
+                  <td>Email Address</td>
+                  <td><%=x.email %></td>
                 </tr>
                 <tr>
                   <td>Father's details</td>
@@ -70,8 +87,9 @@
             </div>
           </div>
         </div>
-      <tr>
-
+      <% if count == 2 %>
+      </div>
+      <% end %>
     <% end %>
 
 <br>
