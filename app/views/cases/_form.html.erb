@@ -1,0 +1,76 @@
+<%= form_for(@case) do |f| %>
+  <% if @case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@case.errors.count, "error") %> prohibited this case from being saved:</h2>
+
+      <ul>
+      <% @case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :DOB %><br>
+    <%= f.text_field :DOB %>
+  </p>
+    <p>
+    <%= f.label :birthplace %><br>
+    <%= f.text_field :birthplace %>
+  </p>
+    <p>
+    <%= f.label :race %>(s)<br>
+    <%= f.text_field :race %>
+  </p>
+    <p>
+    <%= f.label :mothername %><br>
+    <%= f.text_field :mothername %>
+  </p>
+  <p>
+    Mother details<br>
+    <%= f.text_area :motherdetails %>
+  </p>
+  <p>
+    <%= f.label :fathername %><br>
+    <%= f.text_field :fathername %>
+  </p>
+  <p>
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.label :position %><br>
+    <%= f.text_field :position %>
+  </p>
+  <p>
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </p>
+  <p>
+    <%= f.label :occupation %><br>
+    <%= f.text_field :occupation %>
+  </p>
+  <p>
+    <%= f.label :fatherdetails %><br>
+    <%= f.text_area :fatherdetails %>
+  </p>
+  <p>
+    <%= f.label :images %><br>
+    <%= f.text_field :images %>
+  </p>
+  <% if user_signed_in? %>
+    <%= hidden_field_tag 'email', current_user.email %>
+    <p>what<%=current_user.email%></p> 
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

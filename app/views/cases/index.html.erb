@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+<script src="holder.js"></script>
+<h1>Listing Cases</h1>
+    <% @cases.where(email: current_user.email).each do |x| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <% if x.images != nil %>
+              <img src=<%=x.images%>>
+            <% else %>
+              <img src="holder.js/140x140">
+            <% end %>
+            <div class="caption">
+              <h3><%= x.name %></h3>
+              <table class="table table-striped">
+                <tr>
+                  <td>D.O.B.</td>
+                  <td><%=x.DOB%></td>
+                </tr>
+                <tr>
+                  <td>Birthplace</td>
+                  <td><%=x.birthplace%></td>
+                </tr>
+                <tr>
+                  <td>Race</td>
+                  <td><%=x.race%></td>
+                </tr>
+                <tr>
+                  <td>Mother's name</td>
+                  <td><%=x.mothername%></td>
+                </tr>
+                <tr>
+                  <td>place</td>
+                  <td><%=x.place%></td>
+                </tr>
+                <tr>
+                  <td>Mother Details</td>
+                  <td><%=x.motherdetails%></td>
+                </tr  >
+                <tr>
+                  <td>Father Name</td>
+                  <td><%=x.fathername%></td>
+                </tr>
+                <tr>
+                  <td>State</td>
+                  <td><%=x.state%></td>
+                </tr>
+                <tr>
+                  <td>Position</td>
+                  <td><%=x.position%></td>
+                </tr>
+                <tr>
+                  <td>Time Of Service</td>
+                  <td><%=x.time%></td>
+                </tr>
+                <tr>
+                  <td>Occupation</td>
+                  <td><%=x.occupation%></td>
+                </tr>
+                <tr>
+                  <td>Father's details</td>
+                  <td><%=x.fatherdetails%></td>
+                </tr>
+
+
+              </table>
+              <p>
+                <%= link_to 'Edit', edit_case_path(x), class: 'btn btn-default' %>
+                <%= link_to 'Destroy', x, method: :delete, data: { confirm: 'Are you sure?'},class: 'btn btn-primary' %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <tr>
+
+    <% end %>
+
+<br>
+
+<%= link_to 'New Case', new_case_path %>
