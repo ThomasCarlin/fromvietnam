@@ -52,7 +52,7 @@
                   <td><%=x.story%></td>
                 </tr>
 
-              </table>
+</table>
 <% if user_signed_in? %>
   <% if current_user.email == x.email %>
     <%= link_to 'Edit', edit_case_path(@case) %> |

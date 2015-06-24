@@ -1,28 +1,6 @@
 <p id="notice"><%= notice %></p>
 <script src="holder.js"></script>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 <% count = 5 %>
 <h1>Listing Case(s) <%= link_to 'Add a case', new_case_path,  class: 'btn btn-default' %></h1>
 
@@ -44,9 +22,11 @@
             <div class="caption">
                 <h4 align="center"> <%=x.birthplace %> <%=x.DOB %> </h4>
                   <!-- Button trigger modal -->
-                  <button style="position:absolute;bottom:25px;left:110px" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%="\#"+x.id.to_s%>>
+                  <div class="col-md-12 text-center">
+                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target=<%="\#"+x.id.to_s%>>
                     More Info
                   </button>
+                  </div>
 
                   <!-- Modal -->
                   <div class="modal fade" id=<%=x.id.to_s%>> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -54,10 +34,67 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                          <h4 class="modal-title" id="myModalLabel"><%=x.name%></h4>
                         </div>
                         <div class="modal-body">
-                          ...
+                          <% if x.images.length > 4 %>
+                            <img class="responsive"src=<%=x.images%>>
+                          <% else %>
+                            <img src="holder.js/134x200">
+                          <% end %>
+                          <table class="table table-striped">
+                                          <tr>
+                                            <td>D.O.B.</td>
+                                            <td><%=x.DOB%></td>
+                                            <td>Birthplace</td>
+                                            <td><%=x.birthplace%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Race</td>
+                                            <td><%=x.race%></td>
+                                            <td>Meeting place</td>
+                                            <td><%=x.place%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mother's name</td>
+                                            <td><%=x.mothername%></td>
+                                            <td>Mother Details</td>
+                                            <td><%=x.motherdetails%></td>
+                                          </tr> 
+                                          <tr>
+                                            <td>Father Name</td>
+                                            <td><%=x.fathername%></td>
+                                            <td>State</td>
+                                            <td><%=x.state%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Position</td>
+                                            <td><%=x.position%></td>
+                                            <td>Branch of Duty</td>
+                                            <td><%=x.branch %></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Place of Duty</td>
+                                            <td><%=x.placeofduty%></td>
+                                            <td>Time Of Service</td>
+                                            <td><%=x.time%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Occupation</td>
+                                            <td><%=x.occupation%></td>
+                                            <td>Email Address</td>
+                                            <td><%=x.email %></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Father's details</td>
+                                            <td><%=x.fatherdetails%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Story</td>
+                                            <td><%=x.story%></td>
+                                          </tr>
+
+                          </table>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -67,10 +104,6 @@
                     </div>
                   </div>
               <p>
-                <div class="btn-group" style="position:absolute;bottom:25px;left:110px">
-                <%= link_to 'More Info', x,class: 'btn btn-default' %> 
-
-                </div>
               </p>
             </div>
           </div>
