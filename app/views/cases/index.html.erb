@@ -1,7 +1,31 @@
 <p id="notice"><%= notice %></p>
 <script src="holder.js"></script>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <% count = 5 %>
-<h1>Listing Case(s)</h1>
+<h1>Listing Case(s) <%= link_to 'Add a case', new_case_path,  class: 'btn btn-default' %></h1>
+
     <% @cases.each do |x| %>
       <% count = count +1 %>
       <% if count == 6 %>
@@ -10,29 +34,41 @@
       <% end %>
         <div class="col-sm-6 col-md-2">
           <div class="thumbnail" style="height:350px">
-            <h3><%= x.name %></h3>
+            <h3 align="center"><%= x.name %></h3>
 
-            <% if x.images != nil %>
-              <img class="responsive" style="max-width:50%;max-height:300px;min-height:200px" src=<%=x.images%>>
+            <% if x.images.length > 4 %>
+              <img class="responsive" style="max-width:134px;max-height:300px;min-height:200px" src=<%=x.images%>>
             <% else %>
-              <img src="holder.js/140x140">
+              <img src="holder.js/134x200">
             <% end %>
             <div class="caption">
-              <p>
-                <div class="btn-group" style="position:absolute;bottom:25px">
-                <%= link_to 'Show', x,class: 'btn btn-default'  %> 
+                <h4 align="center"> <%=x.birthplace %> <%=x.DOB %> </h4>
+                  <!-- Button trigger modal -->
+                  <button style="position:absolute;bottom:25px;left:110px" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target=<%="\#"+x.id.to_s%>>
+                    More Info
+                  </button>
 
-                <%= link_to 'Edit', edit_case_path(x), class: 'btn btn-default' %>
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Details <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a>Date of Birth: <%=x.DOB %></a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
+                  <!-- Modal -->
+                  <div class="modal fade" id=<%=x.id.to_s%>> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <p>
+                <div class="btn-group" style="position:absolute;bottom:25px;left:110px">
+                <%= link_to 'More Info', x,class: 'btn btn-default' %> 
 
                 </div>
               </p>
@@ -47,4 +83,4 @@
 
 <br>
 
-<%= link_to 'New Case', new_case_path %>
+

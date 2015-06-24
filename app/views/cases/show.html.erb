@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<% x= @case %>
+<% x= @case %>  
 <table class="table table-striped">
                 <tr>
                   <td>D.O.B.</td>
@@ -18,7 +18,7 @@
                   <td><%=x.mothername%></td>
                   <td>Mother Details</td>
                   <td><%=x.motherdetails%></td>
-                </tr>
+                </tr> 
                 <tr>
                   <td>Father Name</td>
                   <td><%=x.fathername%></td>
@@ -47,8 +47,15 @@
                   <td>Father's details</td>
                   <td><%=x.fatherdetails%></td>
                 </tr>
-
+                <tr>
+                  <td>Story</td>
+                  <td><%=x.story%></td>
+                </tr>
 
               </table>
-<%= link_to 'Edit', edit_case_path(@case) %> |
+<% if user_signed_in? %>
+  <% if current_user.email == x.email %>
+    <%= link_to 'Edit', edit_case_path(@case) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', cases_path %>

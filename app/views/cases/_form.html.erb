@@ -74,6 +74,10 @@
     <%= f.label :images %><br>
     <%= f.text_field :images %>
   </p>
+  <p>
+    <%= f.label :story %><br>
+    <%= f.text_area :story %>
+  </p>
   <% if user_signed_in? %>
     <%= hidden_field_tag 'email', current_user.email %>
     <p>what<%=current_user.email%></p> 

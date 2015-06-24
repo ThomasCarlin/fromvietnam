@@ -10,6 +10,7 @@ class CasesController < ApplicationController
 
   def show
     respond_with(@case)
+    
   end
 
   def new
@@ -43,6 +44,6 @@ class CasesController < ApplicationController
     end
 
     def case_params
-      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:images,:email, :placeofduty,:branch)
+      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:images,:email, :placeofduty,:branch, :story)
     end
 end
