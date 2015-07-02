@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624182559) do
+ActiveRecord::Schema.define(version: 20150702031739) do
 
   create_table "cases", force: :cascade do |t|
     t.string   "name"
@@ -58,17 +58,24 @@ ActiveRecord::Schema.define(version: 20150624182559) do
 
   create_table "veterans", force: :cascade do |t|
     t.string   "name"
+    t.string   "DOB"
     t.string   "race"
-    t.string   "place"
-    t.string   "motherdetails"
+    t.string   "country"
     t.string   "state"
+    t.string   "branch"
     t.string   "position"
+    t.string   "place"
     t.string   "time"
     t.string   "occupation"
     t.string   "fatherdetails"
+    t.string   "mothername"
+    t.string   "motherdetails"
+    t.string   "email"
+    t.string   "images"
     t.string   "story"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "placeofduty"
   end
 
 end

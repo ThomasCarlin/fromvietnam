@@ -24,6 +24,10 @@ class CasesController < ApplicationController
   def create
     @case = Case.new(case_params)
     @case.email  = params[:email]
+    @case.race = params[:race]
+    x = params[:case]
+    @case.DOB= x["DOB(1i)"]
+
     flash[:notice] = 'Case was successfully created.' if @case.save
     respond_with(@case)
   end

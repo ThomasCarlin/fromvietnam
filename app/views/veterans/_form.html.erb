@@ -1,33 +1,42 @@
-<%= form_for(@case) do |f| %>
-  <% if @case.errors.any? %>
+<%= form_for(@veteran) do |f| %>
+  <% if @veteran.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@case.errors.count, "error") %> prohibited this case from being saved:</h2>
+      <h2><%= pluralize(@veteran.errors.count, "error") %> prohibited this veteran from being saved:</h2>
 
       <ul>
-      <% @case.errors.full_messages.each do |message| %>
+      <% @veteran.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+      t.string   "name"
+    t.string   "DOB"
+    t.string   "race"
+    t.string   "country"
+    t.string   "state"
+    t.string   "branch"
+    t.string   "position"
+    t.string   "place"
+    t.string   "time"
+    t.string   "occupation"
+    t.string   "fatherdetails"
+    t.string   "mothername"
+    t.string   "motherdetails"
+    t.string   "email"
+    t.string   "images"
+    t.string   "story"
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </p>
+  </p>  
   <p>
-    Year born?<br>
-    <%= f.date_select :DOB, order: [:year], start_year: 1920 %>
-  </p>
-    <p>
-    <%= f.label :birthplace %><br>
-    <%= f.text_field :birthplace %>
+    <%= f.label :DOB %><br>
+    <%= f.date_select :DOB %>
   </p>
     <p>
     <%= f.label :race %>(s)<br>
-    <input type="checkbox" name="race[]" value="1" />
-    <input type="checkbox" name="race[]" value="2" />
-    <input type="checkbox" name="race[]" value="3" />
-
+    <%= f.text_field :race %>
   </p>
     <p>
     <%= f.label :mothername %><br>
@@ -38,13 +47,8 @@
     <%= f.text_area :motherdetails %>
   </p>
   <p>
-    <%= f.label :fathername %><br>
-    <%= f.text_field :fathername %>
-  </p>
-  <p>
     <%= f.label :state %><br>
     <%= f.text_field :state %>
-    <%= select_tag :state, options_for_select(us_states) %>
   </p>
   <p>
     <%= f.label :country %><br>
