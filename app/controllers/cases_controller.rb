@@ -27,6 +27,9 @@ class CasesController < ApplicationController
     @case.race = params[:race]
     x = params[:case]
     @case.DOB= x["DOB(1i)"]
+    @case.state = params[:state]
+    @case.race = params[:race]
+    @case.branch = params[:branch]
 
     flash[:notice] = 'Case was successfully created.' if @case.save
     respond_with(@case)

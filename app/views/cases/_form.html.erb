@@ -16,18 +16,15 @@
   </p>
   <p>
     Year born?<br>
-    <%= f.date_select :DOB, order: [:year], start_year: 1920 %>
+    <%= f.date_select :DOB, order: [:year], start_year: 1920, default: {year: 1955} %>
   </p>
     <p>
     <%= f.label :birthplace %><br>
-    <%= f.text_field :birthplace %>
+    <%= f.text_field :birthplace %> 
   </p>
     <p>
     <%= f.label :race %>(s)<br>
-    <input type="checkbox" name="race[]" value="1" />
-    <input type="checkbox" name="race[]" value="2" />
-    <input type="checkbox" name="race[]" value="3" />
-
+    <%= select_tag :race, options_for_select(races) %>
   </p>
     <p>
     <%= f.label :mothername %><br>
@@ -36,14 +33,13 @@
   <p>
     Mother details<br>
     <%= f.text_area :motherdetails %>
-  </p>
+  </p>  
   <p>
     <%= f.label :fathername %><br>
     <%= f.text_field :fathername %>
   </p>
   <p>
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
     <%= select_tag :state, options_for_select(us_states) %>
   </p>
   <p>
@@ -56,11 +52,12 @@
   </p>
   <p>
     <%= f.label :branch %><br>
-    <%= f.text_field :branch %><br>
+    <%= select_tag :branch, options_for_select(military) %>
   </p>
   <p>
     <%= f.label :time %><br>
-    <%= f.text_field :time %>
+    From: <%= f.date_select :startyear, order: [:year],start_year: 1920, default: {year: 1955}%>
+    To: <%= f.date_select :endyear, order: [:year],start_year: 1920, default: { year: 1975 }%>
   </p>
   <p>
     <%= f.label :placeofduty %><br>

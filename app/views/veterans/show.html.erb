@@ -1,40 +1,49 @@
 <p id="notice"><%= notice %></p>
-<% x= @case %>  
+<% x= @veteran %>  
 <table class="table table-striped">
+      t.string   "name"
+    t.string   "DOB"
+    t.string   "race"
+    t.string   "country"
+    t.string   "state"
+    t.string   "branch"
+    t.string   "position"
+    t.string   "place"
+    t.string   "time"
+    t.string   "occupation"
+    t.string   "fatherdetails"
+    t.string   "mothername"
+    t.string   "motherdetails"
+    t.string   "email"
+    t.string   "images"
+    t.string   "story"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "placeofduty"
+    t.string   "startyear"
+    t.string   "endyear"
                 <tr>
                   <td>D.O.B.</td>
                   <td><%=x.DOB%></td>
-                  <td>Birthplace</td>
-                  <td><%=x.birthplace%></td>
-                </tr>
-                <tr>
                   <td>Race</td>
                   <td><%=x.race%></td>
-                  <td>Meeting place</td>
-                  <td><%=x.place%></td>
                 </tr>
                 <tr>
-                  <td>Mother's name</td>
-                  <td><%=x.mothername%></td>
-                  <td>Mother Details</td>
-                  <td><%=x.motherdetails%></td>
-                </tr> 
-                <tr>
-                  <td>Father Name</td>
-                  <td><%=x.fathername%></td>
+                  <td>Country</td>
+                  <td><%=x.country%></td>
                   <td>State</td>
                   <td><%=x.state%></td>
                 </tr>
                 <tr>
-                  <td>Position</td>
+                  <td>branch</td>
+                  <td><%=x.branch%></td>
+                  <td>position</td>
                   <td><%=x.position%></td>
-                  <td>Branch of Duty</td>
-                  <td><%=x.branch %></td>
-                </tr>
+                </tr> 
                 <tr>
-                  <td>Place of Duty</td>
-                  <td><%=x.placeofduty%></td>
-                  <td>Time Of Service</td>
+                  <td>Place</td>
+                  <td><%=x.place%></td>
+                  <td>time</td>
                   <td><%=x.time%></td>
                 </tr>
                 <tr>
@@ -46,6 +55,8 @@
                 <tr>
                   <td>Father's details</td>
                   <td><%=x.fatherdetails%></td>
+                  <td>Mother's name</td>
+                  <td><%= x.mothername %></td>
                 </tr>
                 <tr>
                   <td>Story</td>
@@ -55,7 +66,7 @@
 </table>
 <% if user_signed_in? %>
   <% if current_user.email == x.email %>
-    <%= link_to 'Edit', edit_case_path(@case) %> |
+    <%= link_to 'Edit', edit_veteran_path(@veteran) %> |
   <% end %>
 <% end %>
-<%= link_to 'Back', cases_path %>
+<%= link_to 'Back', veterans_path %>

@@ -24,6 +24,12 @@ class VeteransController < ApplicationController
   def create
     @veteran = Veteran.new(veteran_params)
     @veteran.email  = params[:email]
+    @veteran.race = params[:race]
+    x = params[:veteran]
+    @veteran.DOB= x["DOB(1i)"]
+    @veteran.state = params[:state]
+    @veteran.race = params[:race]
+    @veteran.branch = params[:branch]
     flash[:notice] = 'Veteran was successfully created.' if @veteran.save
     respond_with(@veteran)
   end

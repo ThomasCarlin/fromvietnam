@@ -30,13 +30,9 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>  
-  <p>
-    <%= f.label :DOB %><br>
-    <%= f.date_select :DOB %>
-  </p>
     <p>
     <%= f.label :race %>(s)<br>
-    <%= f.text_field :race %>
+    <%= select_tag :race, options_for_select(races) %>
   </p>
     <p>
     <%= f.label :mothername %><br>
@@ -48,7 +44,7 @@
   </p>
   <p>
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= select_tag :state, options_for_select(us_states) %>
   </p>
   <p>
     <%= f.label :country %><br>
@@ -60,12 +56,12 @@
   </p>
   <p>
     <%= f.label :branch %><br>
-    <%= f.text_field :branch %><br>
+    <%= select_tag :branch, options_for_select(military) %>
   </p>
   <p>
     <%= f.label :time %><br>
-    <%= f.text_field :time %>
-  </p>
+    From: <%= f.date_select :startyear, order: [:year],start_year: 1920, default: {year: 1955}%>
+    To: <%= f.date_select :endyear, order: [:year],start_year: 1920, default: { year: 1975 }%>  </p>
   <p>
     <%= f.label :placeofduty %><br>
     <%= f.text_field :placeofduty %><br>
