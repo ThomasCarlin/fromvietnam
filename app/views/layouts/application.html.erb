@@ -4,15 +4,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Rails Devise" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Devise" %>">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
     <%= csrf_meta_tags %>
-    <script>
-    $(document).ready(function () {
-        $('.dropdown-toggle').dropdown();
-    });
-</script>
+        <!-- Basic -->
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+
+    <title>Full Width | Porto - Responsive HTML5 Template 3.8.0</title> 
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Porto - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/vendor/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/vendor/owlcarousel/owl.carousel.min.css" media="screen">
+    <link rel="stylesheet" href="/vendor/owlcarousel/owl.theme.default.min.css" media="screen">
+    <link rel="stylesheet" href="/vendor/magnific-popup/magnific-popup.css" media="screen">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/theme-elements.css">
+    <link rel="stylesheet" href="/css/theme-blog.css">
+    <link rel="stylesheet" href="/css/theme-shop.css">
+    <link rel="stylesheet" href="/css/theme-animate.css">
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="/css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="/vendor/modernizr/modernizr.js"></script>
+
+    <!--[if IE]>
+      <link rel="stylesheet" href="css/ie.css">
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+      <script src="vendor/respond/respond.js"></script>
+      <script src="vendor/excanvas/excanvas.js"></script>
+    <![endif]-->
   </head>
   <body>
     <header>
