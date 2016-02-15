@@ -1,58 +1,105 @@
-<p id="notice"><%= notice %></p>
-<% x= @case %>  
-<table class="table table-striped">
-                <tr>
-                  <td>D.O.B.</td>
-                  <td><%=x.DOB%></td>
-                  <td>Birthplace</td>
-                  <td><%=x.birthplace%></td>
-                </tr>
-                <tr>
-                  <td>Race</td>
-                  <td><%=x.race%></td>
-                  <td>Meeting place</td>
-                  <td><%=x.place%></td>
-                </tr>
-                <tr>
-                  <td>Mother's name</td>
-                  <td><%=x.mothername%></td>
-                  <td>Mother Details</td>
-                  <td><%=x.motherdetails%></td>
-                </tr> 
-                <tr>
-                  <td>Father Name</td>
-                  <td><%=x.fathername%></td>
-                  <td>State</td>
-                  <td><%=x.state%></td>
-                </tr>
-                <tr>
-                  <td>Position</td>
-                  <td><%=x.position%></td>
-                  <td>Branch of Duty</td>
-                  <td><%=x.branch %></td>
-                </tr>
-                <tr>
-                  <td>Place of Duty</td>
-                  <td><%=x.placeofduty%></td>
-                  <td>Time Of Service</td>
-                  <td><%=x.time%></td>
-                </tr>
-                <tr>
-                  <td>Occupation</td>
-                  <td><%=x.occupation%></td>
-                  <td>Email Address</td>
-                  <td><%=x.email %></td>
-                </tr>
-                <tr>
-                  <td>Father's details</td>
-                  <td><%=x.fatherdetails%></td>
-                </tr>
-                <tr>
-                  <td>Story</td>
-                  <td><%=x.story%></td>
-                </tr>
+            <div role="main" class="main">
 
-</table>
+        <section class="page-header">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <ul class="breadcrumb">
+                  <li><a href="/">Home</a></li>
+                  <li class="active"><%= @case.name %></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h1><%= @case.name %></h1>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-3">
+              <aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options='{"minWidth": 991, "containerSelector": ".container", "padding": {"top": 110}}'>
+                <%= cl_image_tag(@case.images, :class => "img-responsive") %>
+                <h4 class="heading-primary"><%= @case.name %></h4>
+                <ul class="nav nav-list mb-xl show-bg-active">
+                  <li class="active"><a data-hash href="#summary">Summary</a></li>
+                  <li><a data-hash href="#first">First</a></li>
+                  <li>
+                    <a data-hash href="#second">Second</a>
+                  </li>
+                  <li><a data-hash href="#third">Third</a></li>
+                </ul>
+
+              </aside>
+            </div>
+            <div class="col-md-9">
+              <h2 class="mb-sm" id="summary">Summary</h2>
+                <% x= @case %>  
+                <table class="table table-striped">
+                                <tr>
+                                  <td>D.O.B.</td>
+                                  <td><%=x.DOB%></td>
+                                  <td>Birthplace</td>
+                                  <td><%=x.birthplace%></td>
+                                </tr>
+                                <tr>
+                                  <td>Race</td>
+                                  <td><%=x.race%></td>
+                                  <td>Meeting place</td>
+                                  <td><%=x.place%></td>
+                                </tr>
+                                <tr>
+                                  <td>Mother's name</td>
+                                  <td><%=x.mothername%></td>
+                                </tr> 
+                                <tr>
+                                  <td>Father Name</td>
+                                  <td><%=x.fathername%></td>
+                                  <td>State</td>
+                                  <td><%=x.state%></td>
+                                </tr>
+                                <tr>
+                                  <td>Position</td>
+                                  <td><%=x.position%></td>
+                                  <td>Branch of Duty</td>
+                                  <td><%=x.branch %></td>
+                                </tr>
+                                <tr>
+                                  <td>Place of Duty</td>
+                                  <td><%=x.placeofduty%></td>
+                                  <td>Time Of Service</td>
+                                  <td><%=x.time%></td>
+                                </tr>
+                                <tr>
+                                  <td>Occupation</td>
+                                  <td><%=x.occupation%></td>
+                                  <td>Email Address</td>
+                                  <td><%=x.email %></td>
+                                </tr>
+
+                </table>
+              <p></p>
+              <h2 class="mb-sm" id="first">Father's Detail</h2>
+              <p><%= @case.fatherdetails %></p>
+
+              <h2 class="mb-sm" id="second">Mother's Detail</h2>
+              <p><%= @case.motherdetails %></p>
+
+              <h2 class="mb-sm" id="third">Story</h2>
+              <p><%= @case.story %></p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+<p id="notice"><%= notice %></p>
 <% if user_signed_in? %>
   <% if current_user.email == x.email %>
     <%= link_to 'Edit', edit_case_path(@case) %> |

@@ -2,7 +2,8 @@
         <div class="container">
           <div class="logo">
             <a href="index.html">
-              <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="img/logo.png">
+              <%= image_tag("logo.png", class:"img-responsive", alt:"Porto", width:"111", height:"54") %>
+
             </a>
           </div>
           <div class="search">
@@ -47,9 +48,11 @@
                   </a>
                 </li>
                 <li class="dropdown mega-menu-item mega-menu-fullwidth">
-                  <a class="dropdown-toggle" href="#">
-                    Shortcodes
-                  </a>
+                  <% if user_signed_in? %>
+                    <%= link_to 'Edit account', edit_user_registration_path %>
+                  <% else %>
+                    <%= link_to 'Sign in', new_user_session_path %>
+                  <% end %>
                 </li>
                 <li class="dropdown">
                   <a class="dropdown-toggle" href="#">
@@ -57,9 +60,7 @@
                   </a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" href="#">
-                    Pages
-                  </a>
+                  <%= link_to 'Cases', cases_path %>
                 </li>
               </ul>
             </nav>
