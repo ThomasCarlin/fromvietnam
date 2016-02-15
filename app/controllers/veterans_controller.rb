@@ -23,6 +23,9 @@ class VeteransController < ApplicationController
 
   def create
     @veteran = Veteran.new(veteran_params)
+    if user_signed_in?
+      @veteran.email = current_user.email
+    end
     @veteran.email  = params[:email]
     @veteran.race = params[:race]
     x = params[:veteran]

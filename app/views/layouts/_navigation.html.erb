@@ -1,19 +1,68 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <header id="header">
+        <div class="container">
+          <div class="logo">
+            <a href="index.html">
+              <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="img/logo.png">
+            </a>
+          </div>
+          <div class="search">
+            <form id="searchForm" action="page-search-results.html" method="get">
+              <div class="input-group">
+                <input type="text" class="form-control search" name="q" id="q" placeholder="Search..." required>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </form>
+          </div>
+          <nav class="nav-top">
+            <ul class="nav nav-pills nav-top">
+              <li>
+                <a href="about-us.html"><i class="fa fa-angle-right"></i>About Us</a>
+              </li>
+              <li>
+                <a href="contact-us.html"><i class="fa fa-angle-right"></i>Contact Us</a>
+              </li>
+              <li class="phone">
+                <span><i class="fa fa-phone"></i>(123) 456-7890</span>
+              </li>
+            </ul>
+          </nav>
+          <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+        <div class="navbar-collapse nav-main-collapse collapse">
+          <div class="container">
+            <ul class="social-icons">
+              <li class="facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook">Facebook</a></li>
+              <li class="twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin">Linkedin</a></li>
+            </ul>
+            <nav class="nav-main mega-menu">
+              <ul class="nav nav-pills nav-main" id="mainMenu">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="/">
+                    Home
+                  </a>
+                </li>
+                <li class="dropdown mega-menu-item mega-menu-fullwidth">
+                  <a class="dropdown-toggle" href="#">
+                    Shortcodes
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#">
+                    Features
+                  </a>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#">
+                    Pages
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>

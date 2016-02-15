@@ -23,7 +23,18 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(case_params)
-    @case.email  = params[:email]
+    if user_signed_in?
+      @case.email = current_user.email
+    end
+
+    time = Time.new
+      @case.placeofduty = params[:case][:image_id]
+      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s)
+
+
+      @case.images = time.to_s
+
+
     @case.race = params[:race]
     x = params[:case]
     @case.DOB= x["DOB(1i)"]
@@ -51,6 +62,6 @@ class CasesController < ApplicationController
     end
 
     def case_params
-      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:images,:email, :placeofduty,:branch, :story)
+      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:email, :placeofduty,:branch, :story)
     end
 end

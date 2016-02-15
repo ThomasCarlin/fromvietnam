@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: tomcarlin
+  api_key: '649818639439779'
+  api_secret: Z8igb5CkoyHbdMTu9mwMk5BSXBM
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: tomcarlin
+  api_key: '649818639439779'
+  api_secret: Z8igb5CkoyHbdMTu9mwMk5BSXBM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: tomcarlin
+  api_key: '649818639439779'
+  api_secret: Z8igb5CkoyHbdMTu9mwMk5BSXBM
+  enhance_image_tag: true
+  static_image_support: false

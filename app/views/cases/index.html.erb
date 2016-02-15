@@ -17,6 +17,10 @@
 }
 </style>
 
+
+<%= cloudinary_js_config %>
+
+
 <% count = 5 %>
 <h1>Listing Case(s) <%= link_to 'Add a case', new_case_path,  class: 'btn btn-default' %></h1>
 
@@ -30,8 +34,11 @@
           <div class="thumbnail" style="height:350px">
             <h3 id="caseheader"><%= x.name %></h3>
 
-            <% if x.images.length > 4 %>
-              <img class="responsive" style="max-width:134px;max-height:300px;min-height:200px" src=<%=x.images%>>
+            <% if x.images != nil  %>
+
+
+              <%= cl_image_tag(x.images, :crop => :fill, :width => 120, :height => 80) %>
+
             <% else %>
               <img src="holder.js/134x200">
             <% end %>
@@ -53,7 +60,7 @@
                           <h4 class="modal-title" id="myModalLabel"><%=x.name%></h4>
                         </div>
                         <div class="modal-body">
-                          <% if x.images.length > 4 %>
+                          <% if x.images != nil %>
                             <img class="responsive"src=<%=x.images%>>
                           <% else %>
                             <img src="holder.js/134x200">
