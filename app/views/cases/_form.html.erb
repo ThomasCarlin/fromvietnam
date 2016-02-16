@@ -24,7 +24,7 @@
   </p>
     <p>
     <%= f.label :race %>(s)<br>
-    <%= select_tag :race, options_for_select(races) %>
+    <%= f.select :race, options_for_select(races) %>
   </p>
     <p>
     <%= f.label :mothername %><br>
@@ -40,7 +40,7 @@
   </p>
   <p>
     <%= f.label :state %><br>
-    <%= select_tag :state, options_for_select(us_states) %>
+    <%= f.select :state, options_for_select(us_states) %>
   </p>
   <p>
     <%= f.label :country %><br>
@@ -52,7 +52,7 @@
   </p>
   <p>
     <%= f.label :branch %><br>
-    <%= select_tag :branch, options_for_select(military) %>
+    <%= f.select :branch, options_for_select(military) %>
   </p>
   <p>
     <%= f.label :time %><br>

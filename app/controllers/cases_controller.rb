@@ -30,17 +30,11 @@ class CasesController < ApplicationController
     time = Time.new
       @case.placeofduty = params[:case][:image_id]
       Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s)
-
-
       @case.images = time.to_s
 
-
-    @case.race = params[:race]
     x = params[:case]
     @case.DOB= x["DOB(1i)"]
-    @case.state = params[:state]
-    @case.race = params[:race]
-    @case.branch = params[:branch]
+
 
     flash[:notice] = 'Case was successfully created.' if @case.save
     respond_with(@case)
