@@ -28,9 +28,9 @@ class CasesController < ApplicationController
     end
 
     time = Time.new
-      @case.placeofduty = params[:case][:image_id]
-      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s)
-      @case.images = time.to_s
+    @case.placeofduty = params[:case][:image_id]
+    Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s)
+    @case.images = time.to_s
 
     x = params[:case]
     @case.DOB= x["DOB(1i)"]
