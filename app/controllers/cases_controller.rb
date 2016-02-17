@@ -36,7 +36,11 @@ class CasesController < ApplicationController
     @case.DOB= x["DOB(1i)"]
 
 
-    flash[:notice] = 'Case was successfully created.' if @case.save
+    if @case.save
+      flash[:notice] = 'Case was successfully created.'
+      AuthenticateMailer.authenticate_email().deliver_now
+    end
+
     respond_with(@case)
   end
 
