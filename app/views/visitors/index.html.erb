@@ -59,6 +59,13 @@
 							<div class="call-to-action-content">
 								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
 								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
+								<%= form_tag(visitors_path, method: "get") do |f| %>
+								  <p>
+								  <%= select_tag :race, options_for_select(races) %>
+
+								  <%= submit_tag("submit") %>
+								  </p>
+								<% end %>
 							</div>
 							<div class="call-to-action-btn">
 								<%= link_to 'Add a case', new_case_path,  class: 'btn btn-lg btn-primary' %>
