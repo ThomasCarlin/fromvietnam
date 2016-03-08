@@ -1,6 +1,7 @@
 module CasesHelper
       def us_states
           [
+            ['State', 'ST'],
             ['Alabama', 'AL'],
             ['Alaska', 'AK'],
             ['Arizona', 'AZ'],

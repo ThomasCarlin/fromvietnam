@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :cases
+  resources :cases do
+  	  member do
+	    post :request_info
+	  end
+	end
   resources :veterans
   get 'case/test'
 

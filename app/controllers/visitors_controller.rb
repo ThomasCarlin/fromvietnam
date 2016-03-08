@@ -6,8 +6,10 @@ class VisitorsController < ApplicationController
     	if params[:race] != nil
     		@cases = @cases.where("race = ? ", params[:race])
     	end
+    	if params[:state] != nil && params[:state].to_s != 'ST'
+    		@cases = @cases.where("state = ?", params[:state])
+    	end
     	respond_with(@cases)
-    	@race = params[:race]
 	end
 
 

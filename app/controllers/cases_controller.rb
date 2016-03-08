@@ -9,6 +9,12 @@ class CasesController < ApplicationController
   end
 
   def show
+    if @case.viewcount != nil
+      @case.viewcount += 1
+    else
+      @case.viewcount = 1
+    end
+    @case.save
     respond_with(@case)
     
   end
@@ -52,6 +58,10 @@ class CasesController < ApplicationController
   def destroy
     @case.destroy
     respond_with(@case)
+  end
+
+  def request_info
+    AuthenticationMailer.request_info_email(Case.find(params[:id]), params[:email], params[:message]).deliver_now
   end
 
   private

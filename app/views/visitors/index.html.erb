@@ -62,7 +62,7 @@
 								<%= form_tag(visitors_path, method: "get") do |f| %>
 								  <p>
 								  <%= select_tag :race, options_for_select(races) %>
-
+								  <%= select_tag :state, options_for_select(us_states) %>
 								  <%= submit_tag("submit") %>
 								  </p>
 								<% end %>

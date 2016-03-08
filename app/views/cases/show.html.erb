@@ -32,6 +32,7 @@
                     <a data-hash href="#second">Second</a>
                   </li>
                   <li><a data-hash href="#third">Third</a></li>
+                  <li><a data-hash href="#requestInfo">Request Info</a></li>
                 </ul>
 
               </aside>
@@ -91,6 +92,18 @@
 
               <h2 class="mb-sm" id="third">Story</h2>
               <p><%= @case.story %></p>
+
+              <h2 class="mb-sm" id="requestInfo">Request Info</h2>
+              <p>
+                <%= form_tag( request_info_case_path ) do |f| %>
+                  <p>
+                  <%= label_tag(:email, "Email") %>
+                  <%= text_field_tag(:email) %>
+                  <%= text_area_tag(:message) %>
+                  <%= submit_tag("submit") %>
+                  </p>
+                <% end %>
+              </p>
 
             </div>
 

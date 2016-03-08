@@ -4,4 +4,10 @@ class AuthenticationMailer < ApplicationMailer
 		@user = user
 		mail(to: "tcarlin11@gmail.com", subject: 'New Case Added')
 	end
+	def request_info_email(c,email,message)
+		@case = c
+		@email = email
+		@message = message
+		mail(to: @case.email, subject: "Someone has requested to contact you!")
+	end
 end
