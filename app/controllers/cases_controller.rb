@@ -1,5 +1,5 @@
 class CasesController < ApplicationController
-  before_action :set_case, only: [:show, :edit, :update, :destroy]
+  before_action :set_case, only: [:show, :edit, :update, :destroy, :request_info]
 
   respond_to :html
 
@@ -61,8 +61,8 @@ class CasesController < ApplicationController
   end
 
   def request_info
-    AuthenticationMailer.request_info_email(Case.find(params[:id], params[:email], params[:message]).deliver_now
-    redirect_to case_path(params[:id])
+    AuthenticationMailer.request_info_email(Case.find(params[:id], params[:email], params[:message])).deliver_now
+    respond_with(@case)
   end
 
   private
