@@ -61,7 +61,7 @@ class CasesController < ApplicationController
   end
 
   def request_info
-    AuthenticationMailer.request_info_email(Case.find(params[:id], params[:email], params[:message])).deliver_now
+    AuthenticationMailer.request_info_email(@case, params[:email], params[:message]).deliver_now
     respond_with(@case)
   end
 
