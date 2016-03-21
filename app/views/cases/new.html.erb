@@ -1,14 +1,53 @@
+			<div role="main" class="main">
+
+				<section class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+									<li><a href="/">Home</a></li>
+									<li class="active">New Case</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h1>New Case</h1>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-12">
+
+							<div class="featured-boxes">
+								<div class="row">
+									<div class="col-sm-10">
+										<div class="featured-box featured-box-primary align-left mt-xlg">
+											<div class="box-content">
+												<h4 class="heading-primary text-uppercase mb-md">New Case Form</h4>
+												<% if user_signed_in? %>
+												<%= render 'form' %>
+												<% end %>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
 
 
 
 
 
-
-
-<%= cloudinary_js_config %>
-<h1>New Case</h1>
-<% if user_signed_in? %>
-<%= render 'form' %>
-<% end %>
 
 <%= link_to 'Back', cases_path %>

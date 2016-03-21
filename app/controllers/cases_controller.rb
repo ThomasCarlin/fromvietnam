@@ -35,7 +35,9 @@ class CasesController < ApplicationController
 
     time = Time.new
     @case.placeofduty = params[:case][:image_id]
-    Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s)
+    if params[:case][:image_id] != nil
+      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s)
+    end
     @case.images = time.to_s
 
     x = params[:case]
@@ -44,7 +46,7 @@ class CasesController < ApplicationController
 
     if @case.save
       flash[:notice] = 'Case was successfully created.'
-      AuthenticationMailer.authenticate_email(@case).deliver_now
+      #AuthenticationMailer.authenticate_email(@case).deliver_now
     end
 
     respond_with(@case)
@@ -71,6 +73,6 @@ class CasesController < ApplicationController
     end
 
     def case_params
-      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:email, :placeofduty,:branch, :story)
+      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:email, :placeofduty,:branch, :story, :isveteran)
     end
 end
