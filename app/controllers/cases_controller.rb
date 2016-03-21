@@ -36,7 +36,7 @@ class CasesController < ApplicationController
     time = Time.new
     @case.placeofduty = params[:case][:image_id]
     if params[:case][:image_id] != nil
-      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s, :width => 300, :height => 200)
+      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
     end
     @case.images = time.to_s
 
