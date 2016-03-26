@@ -49,6 +49,7 @@
                   <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target=<%="\#"+x.id.to_s%>>
                     More Info
                   </button>
+                  <%= link_to 'Delete', x,  method: :delete, class: 'btn btn-danger btn-xs' %>
                   </div>
 
                   <!-- Modal -->

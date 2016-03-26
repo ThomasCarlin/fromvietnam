@@ -84,6 +84,7 @@
 
                 </table>
               <p></p>
+            
               <h2 class="mb-sm" id="first">Father's Detail</h2>
               <p><%= @case.fatherdetails %></p>
 
@@ -95,15 +96,55 @@
 
               <h2 class="mb-sm" id="requestInfo">Request Info</h2>
               <p>
-                <%= form_tag( request_info_case_path ) do |f| %>
-                  <p>
-                  <%= label_tag(:email, "Email") %>
-                  <%= text_field_tag(:email) %>
-                  <%= text_area_tag(:message) %>
-                  <%= submit_tag("submit") %>
-                  </p>
-                <% end %>
+
               </p>
+              <div class="container">
+
+                <div class="row">
+                  <div class="col-md-6">
+
+                    <div class="featured-boxes">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="featured-box featured-box-primary align-left mt-xlg">
+                            <div class="box-content">
+                              <h4 class="heading-primary text-uppercase mb-md">Send a message</h4>
+                              <%= form_tag( request_info_case_path ) do |f| %>
+                                <div class="row">
+                                  <div class="form-group">
+                                    <div class="col-md-12">
+                                      <label>Email</label>
+                                      <%= text_field_tag(:email) %>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="form-group">
+                                    <div class="col-md-12">
+                                      <label>Message</label>
+                                      <%= text_area_tag(:message) %>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  
+                                  <div class="col-md-6">
+                                    <input type="submit" value="Login" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                                  </div>
+                                </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <br>
 
             </div>
 

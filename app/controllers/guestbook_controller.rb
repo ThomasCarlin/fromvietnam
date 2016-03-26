@@ -1,0 +1,2 @@
+class GuestbookController < ApplicationController
+end
