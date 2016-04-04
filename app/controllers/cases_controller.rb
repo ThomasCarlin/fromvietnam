@@ -25,6 +25,12 @@ class CasesController < ApplicationController
   end
 
   def edit
+    @case = Case.find(params[:id])
+    if @case.DOB != nil
+      @DOB = @case.DOB.to_i
+    else
+      @DOB = Date.today
+    end
   end
 
   def create
@@ -34,14 +40,24 @@ class CasesController < ApplicationController
     end
 
     time = Time.new
-    @case.placeofduty = params[:case][:image_id]
     if params[:case][:image_id] != nil
       Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
+      @case.images = time.to_s
     end
-    @case.images = time.to_s
+    if params[:date][:timeOfDutyStart] != nil
+      @case.startyear = params[:date][:timeOfDutyStart].to_s
+    end
+    if params[:date][:timeOfDutyEnd] != nil
+      @case.endyear = params[:date][:timeOfDutyEnd].to_s
+    end
+    if params[:case][:country].to_s != ""
+      country = ISO3166::Country[params[:case][:country] ]
+      @case.country=  country.name
+    end
 
-    x = params[:case]
-    @case.DOB= x["DOB(1i)"]
+    if params[:date][:DOB] != nil
+      @case.DOB = params[:date][:DOB].to_s
+    end
 
 
     if @case.save
@@ -53,7 +69,30 @@ class CasesController < ApplicationController
   end
 
   def update
-    flash[:notice] = 'Case was successfully updated.' if @case.update(case_params)
+    if user_signed_in?
+      @case.email = current_user.email
+    end
+
+    time = Time.new
+    if params[:case][:image_id] != nil
+      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
+      @case.images = time.to_s
+    end
+    if params[:date][:timeOfDutyStart] != nil
+      @case.startyear = params[:date][:timeOfDutyStart].to_s
+    end
+    if params[:date][:timeOfDutyEnd] != nil
+      @case.endyear = params[:date][:timeOfDutyEnd].to_s
+    end
+    if params[:case][:country].to_s != ""
+      country = ISO3166::Country[params[:case][:country] ]
+      @case.country=  country.name
+    end
+
+    if params[:date][:DOB] != nil
+      @case.DOB = params[:date][:DOB].to_s
+    end
+    flash[:notice] = 'Case wasFUCK successfully updated.' if @case.update(case_params)
     respond_with(@case)
   end
 
@@ -67,12 +106,13 @@ class CasesController < ApplicationController
     respond_with(@case)
   end
 
+
   private
     def set_case
       @case = Case.find(params[:id])
     end
 
     def case_params
-      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:email, :placeofduty,:branch, :story, :isveteran)
+      params.require(:case).permit(:name,:DOB,:birthplace,:race,:mothername,:place,:motherdetails,:fathername,:state,:position,:time,:occupation,:fatherdetails,:email, :placeofduty,:branch, :story, :isveteran,:country)
     end
 end

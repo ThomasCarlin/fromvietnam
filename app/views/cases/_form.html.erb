@@ -1,3 +1,14 @@
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="featured-boxes">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                      <div class="box-content">
+                        <h4 class="heading-primary text-uppercase mb-md">New Case Form</h4>
 <%= form_for(@case) do |f| %>
   <% if @case.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +29,7 @@
       </div>
       <div class="col-md-4">
         <label>Year born?</label>
-        <%= f.date_select :DOB, order: [:year], start_year: 1920, default: {year: 1955} %>
+        <%= select_year(@DOB, field_name: 'DOB',  start_year: 1920)%>
       </div>
       <div class="col-md-4">
         <label>Race</label>
@@ -46,14 +57,16 @@
     <div class="form-group">
       <div class="col-md-4">
         <label> State? </label>
-        <%= f.text_field :state %>
+        <%= f.select :state, options_for_select(us_states) %>
       </div>
       <div class="col-md-4">
         <label>Country?</label>
-        <%= f.text_field :country %>
+        <%= country_select("case", "country", include_blank: true, priority_countries: ["US"])%>
       </div>
       <div class="col-md-4">
         <label>Time of duty</label>
+        <%= select_year(Date.today, field_name: 'timeOfDutyStart',  start_year: 1920)%>
+        <%= select_year(Date.today, field_name: 'timeOfDutyEnd',  start_year: 1920)%>
       </div>
     </div>
   </div>
@@ -118,4 +131,13 @@
     <%= hidden_field_tag 'email', current_user.email %>
   <% end %>
 <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+              </div>
+            </div>
+          </div>
+
+        </div>

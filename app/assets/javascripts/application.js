@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require cloudinary
+//= require filterrific/filterrific-jquery
 //= require_tree .

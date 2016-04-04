@@ -1,5 +1,5 @@
 
-	<body>
+
 
 		<div class="body">
 			<div role="main" class="main">
@@ -14,48 +14,36 @@
 						</div>
 					</div>
 				</section>
-
-				<div class="sort-source-wrapper">
-					<div class="container">
-						<ul class="nav nav-pills sort-source secondary pull-right" data-sort-id="portfolio" data-option-key="filter">
-							<li data-option-value="*" class="active"><a href="#">Show All</a></li>
-							<li data-option-value=".websites"><a href="#">Websites</a></li>
-							<li data-option-value=".logos"><a href="#">Logos</a></li>
-							<li data-option-value=".brands"><a href="#">Brands</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<ul class="portfolio-list sort-destination full-width" data-sort-id="portfolio">
-					<% @cases.each do |x| %>
-					<li class="isotope-item websites">
-						<div class="portfolio-item m-none">
-							<a href=<%= case_path(x) %>>
-								<span class="thumb-info thumb-info-centered-info thumb-info-no-borders m-none">
-									<span class="thumb-info-wrapper">
-										<%= cl_image_tag(x.images, :class => "img-responsive") %>
-
-										<span class="thumb-info-title">
-											<span class="thumb-info-inner"><%= x.name %></span>
-											<span class="thumb-info-type">Website</span>
-										</span>
-										<span class="thumb-info-action">
-											<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-										</span>
-									</span>
-								</span>
-							</a>
-						</div>
-					</li>
-					<% end %>
-				</ul>
-
-			</div>
-
 			<section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer no-top-arrow">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
+							<%= form_for_filterrific @filterrific do |f| %>
+							  <div>
+							    Search
+							    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+							    <%= f.text_field(
+							      :search_query,
+							      class: 'filterrific-periodically-observed'
+							    ) %>
+							  </div>
+							  <div>
+							    Registered after
+							    <%= f.text_field(:with_created_at_gte, class: 'js-datepicker') %>
+							  </div>
+							  <div>
+							    Sorted by
+							    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+							  </div>
+							  <div>
+							    <%= link_to(
+							      'Reset filters',
+							      reset_filterrific_url,
+							    ) %>
+							  </div>
+							  <%# add an automated spinner to your form when the list is refreshed %>
+							  <%= render_filterrific_spinner %>
+							<% end %>
 							<div class="call-to-action-content">
 								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
 								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
@@ -75,6 +63,27 @@
 					</div>
 				</div>
 			</section>
+
+				<div class="sort-source-wrapper">
+					<div class="container">
+						<ul class="nav nav-pills sort-source secondary pull-right" data-sort-id="portfolio" data-option-key="filter">
+							<li data-option-value="*" class="active"><a href="#">Show All</a></li>
+							<li data-option-value=".websites"><a href="#">Websites</a></li>
+							<li data-option-value=".logos"><a href="#">Logos</a></li>
+							<li data-option-value=".brands"><a href="#">Brands</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<ul class="portfolio-list sort-destination full-width" data-sort-id="portfolio">
+					<%= render(
+					  partial: 'list',
+					  locals: { whats: @cases }
+					) %>
+				</ul>
+
+			</div>
+
 		</div>
 
 		<!-- Vendor -->
@@ -82,31 +91,7 @@
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<![endif]-->
 		<!--[if gte IE 9]><!-->
-		<script src="vendor/jquery/jquery.js"></script>
-		<!--<![endif]-->
-		<script src="vendor/jquery.appear/jquery.appear.js"></script>
-		<script src="vendor/jquery.easing/jquery.easing.js"></script>
-		<script src="vendor/jquery-cookie/jquery-cookie.js"></script>
-		<script src="vendor/bootstrap/bootstrap.js"></script>
-		<script src="vendor/common/common.js"></script>
-		<script src="vendor/jquery.validation/jquery.validation.js"></script>
-		<script src="vendor/jquery.stellar/jquery.stellar.js"></script>
-		<script src="vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js"></script>
-		<script src="vendor/jquery.gmap/jquery.gmap.js"></script>
-		<script src="vendor/isotope/jquery.isotope.js"></script>
-		<script src="vendor/owlcarousel/owl.carousel.js"></script>
-		<script src="vendor/jflickrfeed/jflickrfeed.js"></script>
-		<script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
-		<script src="vendor/vide/vide.js"></script>
-		
-		<!-- Theme Base, Components and Settings -->
-		<script src="js/theme.js"></script>
-		
-		<!-- Theme Custom -->
-		<script src="js/custom.js"></script>
-		
-		<!-- Theme Initialization Files -->
-		<script src="js/theme.init.js"></script>
+
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
 		<script type="text/javascript">
@@ -124,4 +109,3 @@
 		</script>
 		 -->
 
-	</body>
