@@ -40,8 +40,8 @@ class PeopleController < ApplicationController
     end
 
     time = Time.new
-    if params[:case][:image_id] != nil
-      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
+    if params[:person][:image_id] != nil
+      Cloudinary::Uploader.upload(params[:person][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
       @case.images = time.to_s
     end
     if params[:date][:timeOfDutyStart] != nil
@@ -50,8 +50,8 @@ class PeopleController < ApplicationController
     if params[:date][:timeOfDutyEnd] != nil
       @case.endyear = params[:date][:timeOfDutyEnd].to_s
     end
-    if params[:case][:country].to_s != ""
-      country = ISO3166::Country[params[:case][:country] ]
+    if params[:person][:country].to_s != ""
+      country = ISO3166::Country[params[:person][:country] ]
       @case.country=  country.name
     end
 
@@ -74,8 +74,8 @@ class PeopleController < ApplicationController
     end
 
     time = Time.new
-    if params[:case][:image_id] != nil
-      Cloudinary::Uploader.upload(params[:case][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
+    if params[:person][:image_id] != nil
+      Cloudinary::Uploader.upload(params[:person][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
       @case.images = time.to_s
     end
     if params[:date][:timeOfDutyStart] != nil
@@ -84,8 +84,8 @@ class PeopleController < ApplicationController
     if params[:date][:timeOfDutyEnd] != nil
       @case.endyear = params[:date][:timeOfDutyEnd].to_s
     end
-    if params[:case][:country].to_s != ""
-      country = ISO3166::Country[params[:case][:country] ]
+    if params[:person][:country].to_s != ""
+      country = ISO3166::Country[params[:person][:country] ]
       @case.country=  country.name
     end
 
