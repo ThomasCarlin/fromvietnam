@@ -6,7 +6,9 @@ class VisitorsController < ApplicationController
           Person,
           params[:filterrific],
           select_options: {
-            sorted_by: Person.options_for_sorted_by
+            sorted_by: Person.options_for_sorted_by,
+            state: Person.options_for_states,
+            race: Person.options_for_race
           }
         ) or return
         @cases= @filterrific.find.page(params[:page])

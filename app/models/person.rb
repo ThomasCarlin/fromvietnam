@@ -20,39 +20,39 @@ class Person < ActiveRecord::Base
 	    order("people.created_at #{ direction }")
 	  when /^viewcount/
 	  	order("people.viewcount desc")
+    when /^race_/
+      race = sort_option.to_s[5..-1]
+      where(race: race)
 	  else
-	    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+      where(state: sort_option.to_s)
 	  end
 	}
-
-
   scope :search_query, lambda { |query|
-  # Searches the students table on the 'first_name' and 'last_name' columns.
-  # Matches using LIKE, automatically appends '%' to each term.
-  # LIKE is case INsensitive with MySQL, however it is case
-  # sensitive with PostGreSQL. To make it work in both worlds,
-  # we downcase everything.
-  return nil  if query.blank?
-
-  # condition query, parse into individual keywords
-  terms = query.downcase.split(/\s+/)
-
-  # replace "*" with "%" for wildcard searches,
-  # append '%', remove duplicate '%'s
-  terms = terms.map { |e|
-    (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+    return nil  if query.blank?
+    # condition query, parse into individual keywords
+    terms = query.downcase.split(/\s+/)
+    # replace "*" with "%" for wildcard searches,
+    # append '%', remove duplicate '%'s
+    terms = terms.map { |e|
+      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+    }
+    # configure number of OR conditions for provision
+    # of interpolation arguments. Adjust this if you
+    # change the number of OR conditions.
+    num_or_conditions = 3
+    where(
+      terms.map {
+        or_clauses = [
+          "LOWER(people.name) LIKE ?",
+          "LOWER(people.mothername) LIKE ?",
+          "LOWER(people.fathername) LIKE ?"
+        ].join(' OR ')
+        "(#{ or_clauses })"
+      }.join(' AND '),
+      *terms.map { |e| [e] * num_or_conditions }.flatten
+    )
   }
-  # configure number of OR conditions for provision
-  # of interpolation arguments. Adjust this if you
-  # change the number of OR conditions.
-  num_or_conds = 1
-  where(
-    terms.map { |term|
-      "(LOWER(cases.name) LIKE ?)"
-    }.join(' AND '),
-    *terms.map { |e| [e] * num_or_conds }.flatten
-  )
-}
+
   def self.options_for_sorted_by
     [
       ['Registration date (newest first)', 'created_at_desc'],
@@ -60,5 +60,72 @@ class Person < ActiveRecord::Base
       ['FUCK', 'viewcount']
     ]
   end
-
+  def self.options_for_states
+      [
+        ['State', 'ST'],
+        ['Alabama', 'AL'],
+        ['Alaska', 'AK'],
+        ['Arizona', 'AZ'],
+        ['Arkansas', 'AR'],
+        ['California', 'CA'],
+        ['Colorado', 'CO'],
+        ['Connecticut', 'CT'],
+        ['Delaware', 'DE'],
+        ['District of Columbia', 'DC'],
+        ['Florida', 'FL'],
+        ['Georgia', 'GA'],
+        ['Hawaii', 'HI'],
+        ['Idaho', 'ID'],
+        ['Illinois', 'IL'],
+        ['Indiana', 'IN'],
+        ['Iowa', 'IA'],
+        ['Kansas', 'KS'],
+        ['Kentucky', 'KY'],
+        ['Louisiana', 'LA'],
+        ['Maine', 'ME'],
+        ['Maryland', 'MD'],
+        ['Massachusetts', 'MA'],
+        ['Michigan', 'MI'],
+        ['Minnesota', 'MN'],
+        ['Mississippi', 'MS'],
+        ['Missouri', 'MO'],
+        ['Montana', 'MT'],
+        ['Nebraska', 'NE'],
+        ['Nevada', 'NV'],
+        ['New Hampshire', 'NH'],
+        ['New Jersey', 'NJ'],
+        ['New Mexico', 'NM'],
+        ['New York', 'NY'],
+        ['North Carolina', 'NC'],
+        ['North Dakota', 'ND'],
+        ['Ohio', 'OH'],
+        ['Oklahoma', 'OK'],
+        ['Oregon', 'OR'],
+        ['Pennsylvania', 'PA'],
+        ['Puerto Rico', 'PR'],
+        ['Rhode Island', 'RI'],
+        ['South Carolina', 'SC'],
+        ['South Dakota', 'SD'],
+        ['Tennessee', 'TN'],
+        ['Texas', 'TX'],
+        ['Utah', 'UT'],
+        ['Vermont', 'VT'],
+        ['Virginia', 'VA'],
+        ['Washington', 'WA'],
+        ['West Virginia', 'WV'],
+        ['Wisconsin', 'WI'],
+        ['Wyoming', 'WY']
+      ]
+  end
+  def self.options_for_race
+        [
+              ['African','race_African'],
+              ['Asian','race_Asian'],
+              ['Caucasian','race_Caucasian'],
+              ['Hispanic/Latino','race_Hispanic/Latino'],
+              ['Native American','race_Native American'],
+              ['Other','race_Other'],
+              ['Do not know','race_Do not know']
+        ]
+  end
 end

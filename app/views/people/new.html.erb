@@ -1,0 +1,33 @@
+			<div role="main" class="main">
+
+				<section class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+									<li><a href="/">Home</a></li>
+									<li class="active">New Case</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h1>New Case</h1>
+							</div>
+						</div>
+					</div>
+				</section>
+
+												<% if user_signed_in? %>
+												<%= render 'form' %>
+												<% end %>
+
+
+			</div>
+
+
+
+
+
+
+<%= link_to 'Back', people_path %>

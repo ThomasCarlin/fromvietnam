@@ -14,55 +14,6 @@
 						</div>
 					</div>
 				</section>
-			<section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer no-top-arrow">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<%= form_for_filterrific @filterrific do |f| %>
-							  <div>
-							    Search
-							    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-							    <%= f.text_field(
-							      :search_query,
-							      class: 'filterrific-periodically-observed'
-							    ) %>
-							  </div>
-							  <div>
-							    Registered after
-							    <%= f.text_field(:with_created_at_gte, class: 'js-datepicker') %>
-							  </div>
-							  <div>
-							    Sorted by
-							    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-							  </div>
-							  <div>
-							    <%= link_to(
-							      'Reset filters',
-							      reset_filterrific_url,
-							    ) %>
-							  </div>
-							  <%# add an automated spinner to your form when the list is refreshed %>
-							  <%= render_filterrific_spinner %>
-							<% end %>
-							<div class="call-to-action-content">
-								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
-								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
-								<%= form_tag(visitors_path, method: "get") do |f| %>
-								  <p>
-								  <%= select_tag :race, options_for_select(races) %>
-								  <%= select_tag :state, options_for_select(us_states) %>
-								  <%= submit_tag("submit") %>
-								  </p>
-								<% end %>
-							</div>
-							<div class="call-to-action-btn">
-								<%= link_to 'Add a case', new_case_path,  class: 'btn btn-lg btn-primary' %>
-								<span class="arrow hlb hidden-xs hidden-sm hidden-md" data-appear-animation="rotateInUpLeft" style="top: -12px;"></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 
 				<div class="sort-source-wrapper">
 					<div class="container">
@@ -83,6 +34,46 @@
 				</ul>
 
 			</div>
+			<section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer no-top-arrow">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="call-to-action-content">
+								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
+								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
+							<%= form_for_filterrific @filterrific do |f| %>
+							  <div>
+							    Search
+							    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+							    <%= f.text_field(
+							      :search_query,
+							      class: 'filterrific-periodically-observed'
+							    ) %>
+							  </div>
+							  <div>
+							    Sorted by
+							    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+							    <%= f.select(:sorted_by, @filterrific.select_options[:state]) %>
+							    <%= f.select(:sorted_by, @filterrific.select_options[:race]) %>
+							  </div>
+							  <div>
+							    <%= link_to(
+							      'Reset filters',
+							      reset_filterrific_url,
+							    ) %>
+							  </div>
+							  <%# add an automated spinner to your form when the list is refreshed %>
+							  <%= render_filterrific_spinner %>
+							<% end %>
+							</div>
+							<div class="call-to-action-btn">
+								<%= link_to 'Add a case', new_person_path,  class: 'btn btn-lg btn-primary' %>
+								<span class="arrow hlb hidden-xs hidden-sm hidden-md" data-appear-animation="rotateInUpLeft" style="top: -12px;"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 		</div>
 

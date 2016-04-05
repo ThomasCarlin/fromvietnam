@@ -65,7 +65,7 @@ module CasesHelper
                   ['Hispanic/Latino'],
                   ['Native American'],
                   ['Other'],
-                  ['Do not know/Prefer not to answer']
+                  ['Do not know']
             ]
       end
 

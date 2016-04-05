@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :cases do
+  resources :people do
   	  member do
 	    post :request_info
 	  end

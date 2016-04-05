@@ -1,0 +1,143 @@
+<p id="notice"><%= notice %></p>
+<script src="holder.js"></script>
+<style> 
+#div1 {
+    white-space: nowrap; 
+    width: 12em; 
+    overflow: hidden;
+    text-overflow: clip; 
+    border: 1px solid #000000;
+}
+
+#caseheader {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    text-align: center;
+}
+</style>
+
+
+<%= cloudinary_js_config %>
+
+
+<% count = 5 %>
+<h1>Listing Case(s) <%= link_to 'Add a case', new_case_path,  class: 'btn btn-default' %></h1>
+
+    <% @cases.each do |x| %>
+      <% count = count +1 %>
+      <% if count == 6 %>
+      <div class="row">
+        <% count = 0 %>
+      <% end %>
+        <div class="col-sm-6 col-md-2">
+          <div class="thumbnail" style="height:350px">
+            <h3 id="caseheader"><%= x.name %></h3>
+
+            <% if x.images != nil  %>
+
+
+              <%= cl_image_tag(x.images, :crop => :fill, :width => 120, :height => 80) %>
+
+            <% else %>
+              <img src="holder.js/134x200">
+            <% end %>
+            <div class="caption">
+                <h4 id="caseheader"> <%=x.birthplace %> <%=x.DOB %> </h4>
+                  <!-- Button trigger modal -->
+                  <div class="col-md-12 text-center">
+                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target=<%="\#"+x.id.to_s%>>
+                    More Info
+                  </button>
+                  <%= link_to 'Delete', x,  method: :delete, class: 'btn btn-danger btn-xs' %>
+                  </div>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id=<%=x.id.to_s%>> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel"><%=x.name%></h4>
+                        </div>
+                        <div class="modal-body">
+                          <% if x.images != nil %>
+                            <img class="responsive"src=<%=x.images%>>
+                          <% else %>
+                            <img src="holder.js/134x200">
+                          <% end %>
+                          <table class="table table-striped">
+                                          <tr>
+                                            <td>D.O.B.</td>
+                                            <td><%=x.DOB%></td>
+                                            <td>Birthplace</td>
+                                            <td><%=x.birthplace%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Race</td>
+                                            <td><%=x.race%></td>
+                                            <td>Meeting place</td>
+                                            <td><%=x.place%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mother's name</td>
+                                            <td><%=x.mothername%></td>
+                                            <td>Mother Details</td>
+                                            <td><%=x.motherdetails%></td>
+                                          </tr> 
+                                          <tr>
+                                            <td>Father Name</td>
+                                            <td><%=x.fathername%></td>
+                                            <td>State</td>
+                                            <td><%=x.state%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Position</td>
+                                            <td><%=x.position%></td>
+                                            <td>Branch of Duty</td>
+                                            <td><%=x.branch %></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Place of Duty</td>
+                                            <td><%=x.placeofduty%></td>
+                                            <td>Time Of Service</td>
+                                            <td><%=x.time%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Occupation</td>
+                                            <td><%=x.occupation%></td>
+                                            <td>Email Address</td>
+                                            <td><%=x.email %></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Father's details</td>
+                                            <td><%=x.fatherdetails%></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Story</td>
+                                            <td><%=x.story%></td>
+                                          </tr>
+
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <%= link_to 'Edit', edit_case_path(x), class: 'btn btn-primary' %>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <p>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% if count == 5 %>
+      </div>
+      <div class="clearfix visible-xs-block"></div>
+      <% end %>
+    <% end %>
+
+<br>
+
+
