@@ -53,8 +53,8 @@
 							  <div>
 							    Sorted by
 							    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-							    <%= f.select(:sorted_by, @filterrific.select_options[:state]) %>
-							    <%= f.select(:sorted_by, @filterrific.select_options[:race]) %>
+							    <%= f.select(:with_state, @filterrific.select_options[:state]) %>
+							    <%= f.select(:with_race, @filterrific.select_options[:race]) %>
 							  </div>
 							  <div>
 							    <%= link_to(

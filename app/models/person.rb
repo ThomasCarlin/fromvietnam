@@ -4,6 +4,8 @@ class Person < ActiveRecord::Base
     available_filters: [
       :sorted_by,
       :search_query,
+      :with_state,
+      :with_race,
       :with_country_id,
       :with_created_at_gte
     ]
@@ -20,13 +22,18 @@ class Person < ActiveRecord::Base
 	    order("people.created_at #{ direction }")
 	  when /^viewcount/
 	  	order("people.viewcount desc")
-    when /^race_/
-      race = sort_option.to_s[5..-1]
-      where(race: race)
-	  else
-      where(state: sort_option.to_s)
 	  end
 	}
+  scope :with_state, lambda { |sort_option|
+    if sort_option.to_s!= "ST"
+      where(state: sort_option.to_s)
+    end
+  }
+  scope :with_race, lambda { |sort_option|
+    if sort_option.to_s!= "blank"
+      where(race: sort_option.to_s)
+    end
+  }
   scope :search_query, lambda { |query|
     return nil  if query.blank?
     # condition query, parse into individual keywords
@@ -119,13 +126,13 @@ class Person < ActiveRecord::Base
   end
   def self.options_for_race
         [
-              ['African','race_African'],
-              ['Asian','race_Asian'],
-              ['Caucasian','race_Caucasian'],
-              ['Hispanic/Latino','race_Hispanic/Latino'],
-              ['Native American','race_Native American'],
-              ['Other','race_Other'],
-              ['Do not know','race_Do not know']
+              ['Race','blank'],
+              ['African','African'],
+              ['Asian','Asian'],
+              ['Caucasian','Caucasian'],
+              ['Hispanic/Latino','Hispanic/Latino'],
+              ['Native American','Native American'],
+              ['Other','Other']
         ]
   end
 end
