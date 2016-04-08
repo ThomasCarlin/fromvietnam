@@ -10,7 +10,7 @@
               <a href=<%= person_path(x) %>>
                 <span class="thumb-info thumb-info-centered-info thumb-info-no-borders m-none">
                   <span class="thumb-info-wrapper">
-                    <%= cl_image_tag(x.images, :class => "img-responsive") %>
+                    <%= cl_image_tag(x.images, :class => "img-responsive",:width => 300, :height => 200, :crop=> :limit) %>
 
                     <span class="thumb-info-title">
                       <span class="thumb-info-inner"><%= x.name %></span>

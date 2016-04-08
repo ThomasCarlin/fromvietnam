@@ -41,7 +41,7 @@ class PeopleController < ApplicationController
 
     time = Time.new
     if params[:person][:image_id] != nil
-      Cloudinary::Uploader.upload(params[:person][:image_id], :public_id => time.to_s, :width => 300, :height => 200, :crop=> :limit)
+      Cloudinary::Uploader.upload(params[:person][:image_id], :public_id => time.to_s)
       @case.images = time.to_s
     end
     if params[:date][:timeOfDutyStart] != nil
