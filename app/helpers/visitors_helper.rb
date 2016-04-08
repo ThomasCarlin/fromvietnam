@@ -65,7 +65,7 @@ module VisitorsHelper
                   ['Hispanic/Latino'],
                   ['Native American'],
                   ['Other'],
-                  ['Do not know/Prefer not to answer']
+                  ['Unknown']
             ]
       end
 
