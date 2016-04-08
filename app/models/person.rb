@@ -10,7 +10,7 @@ class Person < ActiveRecord::Base
       :with_created_at_gte
     ]
   )
-  self.per_page = 2
+  self.per_page = 30
 	scope :sorted_by, lambda { |sort_option|
 	  # extract the sort direction from the param value.
 	  direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
