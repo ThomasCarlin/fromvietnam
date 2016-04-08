@@ -1,7 +1,7 @@
 module VisitorsHelper
       def us_states
           [
-            ['State', 'ST'],
+            [''],
             ['Alabama', 'AL'],
             ['Alaska', 'AK'],
             ['Arizona', 'AZ'],
@@ -59,18 +59,19 @@ module VisitorsHelper
 
       def races
             [
+                  [''],
                   ['African'],
                   ['Asian'],
                   ['Caucasian'],
                   ['Hispanic/Latino'],
                   ['Native American'],
-                  ['Other'],
-                  ['Unknown']
+                  ['Other']
             ]
       end
 
       def military
             [
+                  [''],
                   ['Army'],
                   ['Marine Corps'],
                   ['Navy'],
