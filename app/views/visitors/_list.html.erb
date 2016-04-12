@@ -11,7 +11,7 @@
 
                     <span class="thumb-info-title">
                       <span class="thumb-info-inner"><%= x.name %></span>
-                      <span class="thumb-info-type">Website</span>
+                      <span class="thumb-info-type">Info</span>
                     </span>
                     <span class="thumb-info-action">
                       <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
@@ -22,6 +22,11 @@
             </div>
           </li>
     <% end %>
-  <%= will_paginate whats %>
 </div>
-
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+                  <%= will_paginate whats %>
+            </div>
+          </div>
+        </div>
