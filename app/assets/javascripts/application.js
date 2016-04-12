@@ -11,9 +11,24 @@
 // about supported directives.
 //
 
+//= require modernizr
 //= require jquery
 //= require jquery_ujs
+//= require jquery.appear.js
+//= require jquery.easing.js
+//= require jquery-cookie.js
 //= require bootstrap
+//= require common
+//= require jquery.validation
+//= require jquery.stellar
+//= require jquery.easy-pie-chart
+//= require jquery.gmap
+//= require owl.carousel
+//= require jflickrfeed
+//= require jquery.magnific-popup
+//= require vide
+//= require theme
+//= require custom
+//= require theme.init
 //= require cloudinary
 //= require filterrific/filterrific-jquery
-//= require_tree .

@@ -10,6 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ *= require_bootstrap
+ *= require_font-awesome
+ *= require_owl.carousel.min
+ *= require_owl.theme.default.min
+ *= require_magnific_popup
+ *= require_theme
+ *= require_theme-elements
+ *= require_theme-blog
+ *= require_theme-shop
+ *= require_theme-animate
+ *= require_default
+ *= require_custom
  */
