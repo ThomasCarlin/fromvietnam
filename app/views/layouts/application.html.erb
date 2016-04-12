@@ -14,11 +14,11 @@
     <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 
-    <title>Full Width | Porto - Responsive HTML5 Template 3.8.0</title> 
+    <title>From Vietnam</title> 
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Responsive HTML5 Template">
-    <meta name="author" content="okler.net">
+    <meta name="keywords" content="Vietnam" />
+    <meta name="description" content="From Vietnam">
+    <meta name="author" content="tomcarl.in">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
@@ -41,14 +41,14 @@
       <script src="vendor/excanvas/excanvas.js"></script>
     <![endif]-->
   </head>
+  <body>
 <div class="body">
-    <header id="header">
+    <header id="header" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 0, "stickySetTop": "0"}'>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
        <%= render 'layouts/messages' %>
        <%= yield %>
-    </main>
         <%= render 'layouts/footer' %>
 </div>
+</body>
 </html>
