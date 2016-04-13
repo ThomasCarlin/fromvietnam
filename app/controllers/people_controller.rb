@@ -25,7 +25,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @case = Case.find(params[:id])
+    @case = Person.find(params[:id])
     if @case.DOB != nil
       @DOB = @case.DOB.to_i
     else
@@ -92,13 +92,14 @@ class PeopleController < ApplicationController
     if params[:date][:DOB] != nil
       @case.DOB = params[:date][:DOB].to_s
     end
-    flash[:notice] = 'Case wasFUCK successfully updated.' if @case.update(case_params)
+    flash[:notice] = 'Case was successfully updated.' if @case.update(case_params)
     respond_with(@case)
   end
 
   def destroy
     @case.destroy
-    respond_with(@case)
+    flash[:notice] = 'Case was deleted.' 
+    redirect_to root_path
   end
 
   def request_info
