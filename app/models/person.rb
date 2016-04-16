@@ -36,6 +36,11 @@ class Person < ActiveRecord::Base
       where(race: sort_option.to_s)
     end
   }
+  scope :with_year, lambda { |sort_option|
+    if sort_option.to_s!= "blank"
+      where('startyear <= ? AND endyear >= ?', sort_option.to_i, sort_option.to_i)
+    end
+  }
   scope :search_query, lambda { |query|
     return nil  if query.blank?
     # condition query, parse into individual keywords
