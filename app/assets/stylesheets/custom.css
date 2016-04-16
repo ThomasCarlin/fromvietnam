@@ -51,7 +51,7 @@ select {
 #actionsection {
     margin: 0px;
 }
-.table {
+table {
     color: black;
 }
 .pagination a:hover:not(.active) {background-color: #ddd;}
