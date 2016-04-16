@@ -36,9 +36,6 @@
 	visibility: hidden;
 }
 
-.body {
-    color: #fff;
-}
 select {
     color: black;
 }
@@ -47,11 +44,9 @@ select {
 }
 #filtersection {
     margin-bottom: 0px;
+    color: #fff;
 }
 #actionsection {
     margin: 0px;
-}
-table {
-    color: black;
 }
 .pagination a:hover:not(.active) {background-color: #ddd;}
