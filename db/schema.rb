@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408211741) do
+ActiveRecord::Schema.define(version: 20160416211624) do
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20160408211741) do
     t.string   "placeofduty"
     t.string   "branch"
     t.string   "story"
-    t.string   "startyear"
-    t.string   "endyear"
+    t.integer  "startyear"
+    t.integer  "endyear"
     t.integer  "viewcount"
     t.boolean  "isveteran",     default: false
   end

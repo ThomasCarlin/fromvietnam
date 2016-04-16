@@ -7,7 +7,8 @@ class Person < ActiveRecord::Base
       :with_state,
       :with_race,
       :with_country_id,
-      :with_created_at_gte
+      :with_created_at_gte,
+      :with_year
     ]
   )
   self.per_page = 10
@@ -65,7 +66,7 @@ class Person < ActiveRecord::Base
     [
       ['Registration date (newest first)', 'created_at_desc'],
       ['Registration date (oldest first)', 'created_at_asc'],
-      ['FUCK', 'viewcount']
+      ['Most Popular', 'viewcount']
     ]
   end
   def self.options_for_states

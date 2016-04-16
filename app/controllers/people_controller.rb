@@ -62,7 +62,7 @@ class PeopleController < ApplicationController
 
     if @case.save
       flash[:notice] = 'Case was successfully created.'
-      #AuthenticationMailer.authenticate_email(@case).deliver_now
+      AuthenticationMailer.authenticate_email(@case).deliver_now
     end
 
     respond_with(@case)

@@ -36,4 +36,19 @@
 	visibility: hidden;
 }
 
+.body {
+    color: #fff;
+}
+select {
+    color: black;
+}
+#filterrific_search_query {
+    color: black;
+}
+#filtersection {
+    margin-bottom: 0px;
+}
+#actionsection {
+    margin: 0px;
+}
 .pagination a:hover:not(.active) {background-color: #ddd;}

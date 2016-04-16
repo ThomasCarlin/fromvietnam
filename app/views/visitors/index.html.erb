@@ -18,7 +18,6 @@
 						</ul>
 					</div>
 				</div>
-
 				<ul class="portfolio-list sort-destination full-width" data-sort-id="portfolio">
 					<%= render(
 					  partial: 'list',
@@ -27,16 +26,14 @@
 				</ul>
 
 			</div>
-			<section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer no-top-arrow">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="call-to-action-content">
-								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
-								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
+				<section id="filtersection" class="section section-primary">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<h4 class="mb-none">Filter Options</h4>
 							<%= form_for_filterrific @filterrific do |f| %>
-							  <div>
-							    Search
+							  <div id="filterrificsearch">
+							    Search by Name, Mother's Name, or Father's Name
 							    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
 							    <%= f.text_field(
 							      :search_query,
@@ -48,6 +45,7 @@
 							    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
 							    <%= f.select(:with_state, @filterrific.select_options[:state]) %>
 							    <%= f.select(:with_race, @filterrific.select_options[:race]) %>
+							    <%= f.select :with_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
 							  </div>
 							  <div>
 							    <%= link_to(
@@ -57,7 +55,17 @@
 							  </div>
 							  <%# add an automated spinner to your form when the list is refreshed %>
 							  <%= render_filterrific_spinner %>
-							<% end %>
+							<% end %>							</div>
+						</div>
+					</div>
+				</section>
+			<section id="actionsection" class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer no-top-arrow">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="call-to-action-content">
+								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
+								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
 							</div>
 							<div class="call-to-action-btn">
 								<%= link_to 'Add a case', new_person_path,  class: 'btn btn-lg btn-primary' %>
@@ -74,17 +82,4 @@
 		<!--[if gte IE 9]><!-->
 
 
-		<script type="text/javascript">
-		
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-76372013-1']);
-			_gaq.push(['_trackPageview']);
-		
-			(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		
-		</script>
 
