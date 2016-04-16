@@ -37,7 +37,7 @@ class Person < ActiveRecord::Base
     end
   }
   scope :with_year, lambda { |sort_option|
-    if sort_option.to_s!= "blank"
+    if sort_option.to_s!= "blank" && sort_option.to_s.length > 3
       where('startyear <= ? AND endyear >= ?', sort_option.to_i, sort_option.to_i)
     end
   }

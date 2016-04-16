@@ -45,7 +45,7 @@
 							    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
 							    <%= f.select(:with_state, @filterrific.select_options[:state]) %>
 							    <%= f.select(:with_race, @filterrific.select_options[:race]) %>
-							    <%= f.select :with_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
+							    <%= f.select :with_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), :include_blank => true %>
 							  </div>
 							  <div>
 							    <%= link_to(
