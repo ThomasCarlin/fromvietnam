@@ -26,8 +26,8 @@ class PeopleController < ApplicationController
 
   def edit
     @case = Person.find(params[:id])
-    if @case.DOB != nil
-      @DOB = @case.DOB.to_i
+    if @case.dob != nil
+      @DOB = @case.dob.to_i
     else
       @DOB = Date.today
     end
@@ -56,7 +56,7 @@ class PeopleController < ApplicationController
     end
 
     if params[:date][:DOB] != nil
-      @case.DOB = params[:date][:DOB].to_s
+      @case.dob = params[:date][:DOB].to_s
     end
 
 
@@ -90,7 +90,7 @@ class PeopleController < ApplicationController
     end
 
     if params[:date][:DOB] != nil
-      @case.DOB = params[:date][:DOB].to_s
+      @case.dob = params[:date][:DOB].to_s
     end
     flash[:notice] = 'Case was successfully updated.' if @case.update(case_params)
     respond_with(@case)
