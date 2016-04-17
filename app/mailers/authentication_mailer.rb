@@ -2,7 +2,7 @@ class AuthenticationMailer < ApplicationMailer
   	default from: "TomCarlinFromVietnam@gmail.com"
 	def authenticate_email(user)
 		@user = user
-		mail(to: "tcarlin11@gmail.com", subject: 'New Case Added')
+		mail(to: "me@tomcarl.in", subject: 'New Case Added')
 	end
 	def request_info_email(c,email,message)
 		@case = c

@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1> <%= @user.name %> added</h1>
+    <h1> <%= @user.name %> added by <%= @user.email %></h1>
     <p>
-      WOOOOOO
+    	<%= cl_image_tag(@user.images, :class => "img-responsive") %>
     </p>
   </body>
 </html>
