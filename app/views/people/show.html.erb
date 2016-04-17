@@ -29,7 +29,12 @@
           <div class="row">
             <div class="col-md-3">
               <aside class="sidebar" id="sidebar" data-plugin-sticky data-plugin-options='{"minWidth": 991, "containerSelector": ".container", "padding": {"top": 110}}'>
-                <%= cl_image_tag(@case.images, :class => "img-responsive") %>
+                      <a class="img-thumbnail lightbox" href=<%=cl_image_path(@case.images)%> data-plugin-options='{"type":"image"}'>
+                        <%= cl_image_tag(@case.images, :class => "img-responsive") %>
+                        <span class="zoom">
+                          <i class="fa fa-search"></i>
+                        </span>
+                      </a>
                 <h4 class="heading-primary"><%= @case.name %></h4>
                 <ul class="nav nav-list mb-xl show-bg-active">
                   <li class="active"><a data-hash href="#summary">Summary</a></li>
