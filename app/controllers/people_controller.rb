@@ -20,8 +20,12 @@ class PeopleController < ApplicationController
   end
 
   def new
-    @case = Person.new
-    respond_with(@case)
+    if user_signed_in?
+      @case = Person.new
+      respond_with(@case)
+    else
+      redirect_to  new_user_session_path 
+    end
   end
 
   def edit
