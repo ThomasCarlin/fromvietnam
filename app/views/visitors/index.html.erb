@@ -49,6 +49,7 @@
 							  <div>
 							  	Year child was born?/Year in service?
 							    <%= f.select :with_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1), :include_blank => true %>
+							  </div>
 							  <div>
 							    <%= link_to(
 							      'Reset filters',
@@ -57,7 +58,8 @@
 							  </div>
 							  <%# add an automated spinner to your form when the list is refreshed %>
 							  <%= render_filterrific_spinner %>
-							<% end %>							</div>
+							<% end %>							
+							</div>
 						</div>
 					</div>
 				</section>
@@ -66,11 +68,10 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="call-to-action-content">
-								<h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
-								<p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
+								<h3><strong>From Vietnam</strong> is a web application dedicated to connecting Vietnam Veteran's and their seperated children.</h3>
 							</div>
 							<div class="call-to-action-btn">
-								<%= link_to 'Add a case', new_person_path,  class: 'btn btn-lg btn-primary' %>
+								<%= link_to 'Add a Person', new_person_path,  class: 'btn btn-lg btn-primary' %>
 								<span class="arrow hlb hidden-xs hidden-sm hidden-md" data-appear-animation="rotateInUpLeft" style="top: -12px;"></span>
 							</div>
 						</div>

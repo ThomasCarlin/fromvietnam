@@ -49,4 +49,7 @@ select {
 #actionsection {
     margin: 0px;
 }
+.new_filterrific div a{
+    color: white;
+}
 .pagination a:hover:not(.active) {background-color: #ddd;}
