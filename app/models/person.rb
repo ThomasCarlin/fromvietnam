@@ -28,7 +28,7 @@ class Person < ActiveRecord::Base
     when /^veterans/
       where(isveteran: true)
     when /^children/
-      where(isveteran: false)
+      where(isveteran: nil)
 	  end
 	}
   scope :with_state, lambda { |sort_option|
