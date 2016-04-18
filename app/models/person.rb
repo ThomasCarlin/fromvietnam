@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
   validates_presence_of :images, :message => "is not set to an image"
   filterrific(
+    default_filter_params: { sorted_by: 'viewcount' },
     available_filters: [
       :sorted_by,
       :search_query,
