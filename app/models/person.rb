@@ -1,6 +1,5 @@
 class Person < ActiveRecord::Base
   filterrific(
-    default_filter_params: { sorted_by: 'viewcount' },
     available_filters: [
       :sorted_by,
       :search_query,
@@ -70,8 +69,8 @@ class Person < ActiveRecord::Base
   def self.options_for_sorted_by
     [
       ['Most Popular', 'viewcount'],
-      ['Registration date (newest first)', 'created_at_desc'],
-      ['Registration date (oldest first)', 'created_at_asc']
+      ['Registration date (oldest first)', 'created_at_asc'],
+      ['Registration date (newest first)', 'created_at_desc']
     ]
   end
   def self.options_for_states
