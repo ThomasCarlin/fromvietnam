@@ -20,7 +20,7 @@ class Person < ActiveRecord::Base
 	  when /^created_at_/
 	    # Simple sort on the created_at column.
 	    # Make sure to include the table name to avoid ambiguous column names.
-	    # Joining on other tables is quite common in Filterrific, and almost
+	    # Joining on other tables is quite common in Filtelrrific, and almost
 	    # every ActiveRecord table has a 'created_at' column.
 	    order("people.created_at #{ direction }")
 	  when /^viewcount/
@@ -80,7 +80,7 @@ class Person < ActiveRecord::Base
       ['Registration date (oldest first)', 'created_at_asc'],
       ['Registration date (newest first)', 'created_at_desc'],
       ['Veterans Only', 'veterans'],
-      ['Children Only', 'chidren']
+      ['Children Only', 'children']
     ]
   end
   def self.options_for_states
