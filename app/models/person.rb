@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  validates_presence_of :images, :message => "is not set to an image"
   filterrific(
     available_filters: [
       :sorted_by,

@@ -28,7 +28,7 @@
         <%= f.text_field :name %>
       </div>
       <div class="col-md-4">
-        <label>Year born?</label>
+        <label>Year child was born?</label>
         <%= select_year(@DOB, field_name: 'DOB',  start_year: 1920, end_year: 2000, include_blank:true)%>
       </div>
       <div class="col-md-4">
@@ -65,8 +65,8 @@
       </div>
       <div class="col-md-4">
         <label>Time of duty</label>
-        <%= select_year(Date.today, field_name: 'timeOfDutyStart',  start_year: 1920)%>
-        <%= select_year(Date.today, field_name: 'timeOfDutyEnd',  start_year: 1920)%>
+        <%= select_year(Date.today, field_name: 'timeOfDutyStart',  start_year: 1920, end_year: 2000, include_blank: true)%>
+        <%= select_year(Date.today, field_name: 'timeOfDutyEnd',  start_year: 1920, end_year: 2000,include_blank: true)%>
       </div>
     </div>
   </div>
@@ -109,17 +109,13 @@
         <%= f.text_area :fatherdetails %>
       </div>
       <div class="col-md-4">
-        <div class="g-recaptcha" data-sitekey="6LfaoBkTAAAAAC3X-AoU-HSXlqZacUhxgpfzOIZ6"></div>
+        <label>Their Story</label><br>
+        <%= f.text_area :story %>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <span class="remember-box checkbox">
-        <label for="rememberme">
-          <input type="checkbox" id="rememberme" name="rememberme">Remember Me
-        </label>
-      </span>
     </div>
     <div class="col-md-6">
       <div class="actions">
