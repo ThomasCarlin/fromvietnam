@@ -1,0 +1,86 @@
+
+			<div role="main" class="main">
+
+				<section class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+									<li><a href="/">Home</a></li>
+									<li class="active">About Us</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h1>About Us</h1>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="word-rotator-title">
+								To you From<strong>
+									<span class="word-rotate" data-plugin-options='{"delay": 2000}'>
+										<span class="word-rotate-items">
+										<% people = Person.all %>
+										<% people.each do |person| %>
+											<span><%=person.name%></span>
+										<% end %>
+										</span>
+									</span>
+								</strong>
+							</h2>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<p class="lead">
+								"They grew up as the leftovers of an unpopular war, straddling two worlds but belonging to neither. Most never knew their fathers. Many were abandoned by their mothers at the gates of orphanages. Some were discarded in garbage cans. Schoolmates taunted and pummeled them and mocked the features that gave them the face of the enemy—round blue eyes and light skin, or dark skin and tight curly hair if their soldier-dads were African-Americans. Their destiny was to become waifs and beggars, living in the streets and parks of South Vietnam's cities, sustained by a single dream: to get to America and find their fathers." <a href="ttp://www.smithsonianmag.com/people-places/children-of-the-vietnam-war-131207347/#Zm21IMXQ4LvP4tvC.99"> - Smithsonian Magazine</a>
+
+
+
+							</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<hr class="tall">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-8">
+							<h3 class="heading-primary"><strong>Who</strong> We Are</h3>
+							<p>From Vietnam was made as a way to connect the children of the Vietnam War with their parents and also to tell a story that is not often told. My mother came to America 8 years before I was born. She had four of my brothers with her but no father. The only place she knew in America was Ohio where the father of one of my brothers was from. It is has been 30 years since then. My brother is already 40 years old and a grandfather. My mission is to help him and other children of the War find their parents and also tell their story of growing up as Amerasians.</p>
+							<p>This project could not have been done without the help from others. I would like to thank Brian Hjort for his tremendous work over the years helping the cause. His website <span href="www.fatherfounded.org" class="alternative-font">FatherFounded.org</span> is the reason why I got interested in making the projec and most of the cases come from his work. I would also like to thank <span class="alternative-font">Paul Sivilotti</span> for his guidance in development. Also <span class="alternative-font">Ida Abdalkhani</span> and <span class="alternative-font">Artie Isaac</span> for their guidance in creativity</p>
+						</div>
+						<div class="col-md-4">
+							<h5 class="text-semibold text-uppercase mt-lg">My brothers</h5>
+							<a class="lightbox" href=<%=image_url('brothers.jpeg')%> data-plugin-options='{"type":"image"}'>
+								<img class="img-responsive" src=<%=image_url('brothers.jpeg')%> alt="Brothers">
+							</a>
+							<h5 class="text-semibold text-uppercase mt-lg">My brother and someone I found on fatherfounded</h5>
+							<a class="lightbox" href=<%=image_url('anhhai.jpeg')%> data-plugin-options='{"type":"image"}'>
+								<img class="img-responsive" src=<%=image_url('anhhai.jpeg')%> alt="Trung Dang">
+							</a>						
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<hr class="tall">
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+
