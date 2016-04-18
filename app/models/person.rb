@@ -25,6 +25,10 @@ class Person < ActiveRecord::Base
 	    order("people.created_at #{ direction }")
 	  when /^viewcount/
 	  	order("people.viewcount desc")
+    when /^veterans/
+      where(isveteran: true)
+    when /^children/
+      where(isveteran: false)
 	  end
 	}
   scope :with_state, lambda { |sort_option|
@@ -54,25 +58,29 @@ class Person < ActiveRecord::Base
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conditions = 3
+    num_or_conditions = 6
     where(
       terms.map {
         or_clauses = [
           "LOWER(people.name) LIKE ?",
           "LOWER(people.mothername) LIKE ?",
-          "LOWER(people.fathername) LIKE ?"
+          "LOWER(people.fathername) LIKE ?",
+          "LOWER(people.birthplace) LIKE ?",
+          "LOWER(people.placeofduty) LIKE ?",
+          "LOWER(people.occupation) LIKE ?"
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),
       *terms.map { |e| [e] * num_or_conditions }.flatten
     )
   }
-
   def self.options_for_sorted_by
     [
       ['Most Popular', 'viewcount'],
       ['Registration date (oldest first)', 'created_at_asc'],
-      ['Registration date (newest first)', 'created_at_desc']
+      ['Registration date (newest first)', 'created_at_desc'],
+      ['Veterans Only', 'veterans'],
+      ['Children Only', 'chidren']
     ]
   end
   def self.options_for_states
