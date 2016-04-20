@@ -25,9 +25,7 @@
                   </a>
                 </li>
                 <li class="dropdown">
-                  <a href="about">
-                    About
-                  </a>
+                  <%= link_to 'About', about_path%>
                 </li>
                 <li class="dropdown mega-menu-item mega-menu-fullwidth">
                   <% if user_signed_in? %>
